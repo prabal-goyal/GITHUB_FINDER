@@ -48,7 +48,7 @@ class App extends Component {
               <Route
                 exact
                 path="/"
-                render={(props) => (
+                element={
                   <Fragment>
                     <Search
                       searchUsers={this.searchUsers}
@@ -58,7 +58,7 @@ class App extends Component {
                     />
                     <Users loading={loading} users={users} />
                   </Fragment>
-                )}
+                }
               />
             </Routes>
           </div>
