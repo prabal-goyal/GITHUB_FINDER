@@ -2,8 +2,10 @@ import React, { useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Repos from '../repos/Repos';
+import Spinner from '../layout/Spinner';
+import PropTypes from 'prop-types';
 
-function User({ user, loading, getUser, getUserRepos, repos }) {
+const User = ({ user, loading, getUser, getUserRepos, repos }) => {
   const params = useParams();
   const {
     name,
@@ -23,11 +25,12 @@ function User({ user, loading, getUser, getUserRepos, repos }) {
 
   useEffect(() => {
     getUser(params.login);
-  }, [params.login, getUser]);
-
-  useEffect(() => {
     getUserRepos(params.login);
-  }, [params.login, getUserRepos]);
+    // eslint-disable-next-line
+  }, []);
+
+  // Adding spinner
+  if (loading) return <Spinner />;
 
   return (
     <Fragment>
@@ -54,13 +57,12 @@ function User({ user, loading, getUser, getUserRepos, repos }) {
         <div>
           {bio && (
             <Fragment>
-              <h3>Bio</h3>
-              <p>{bio}</p>
+              <p>
+                <strong>Bio: </strong>
+                {bio}
+              </p>
             </Fragment>
           )}
-          <a href={html_url} className="btn btn-dark my-1">
-            Visit Profile
-          </a>
           <ul>
             <li>
               {login && (
@@ -84,6 +86,9 @@ function User({ user, loading, getUser, getUserRepos, repos }) {
               )}
             </li>
           </ul>
+          <a href={html_url} className="btn btn-dark my-1">
+            Visit Profile
+          </a>
         </div>
       </div>
       <div className="card text-center">
@@ -95,6 +100,14 @@ function User({ user, loading, getUser, getUserRepos, repos }) {
       <Repos repos={repos} />
     </Fragment>
   );
-}
+};
+
+User.propTypes = {
+  loading: PropTypes.bool,
+  user: PropTypes.object.isRequired,
+  repos: PropTypes.array.isRequired,
+  getUser: PropTypes.func.isRequired,
+  getUserRepos: PropTypes.func.isRequired,
+};
 
 export default User;
