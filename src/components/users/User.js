@@ -1,8 +1,9 @@
 import React, { useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Repos from '../repos/Repos';
 
-function User({ user, loading, getUser }) {
+function User({ user, loading, getUser, getUserRepos, repos }) {
   const params = useParams();
   const {
     name,
@@ -22,7 +23,11 @@ function User({ user, loading, getUser }) {
 
   useEffect(() => {
     getUser(params.login);
-  }, []);
+  }, [params.login, getUser]);
+
+  useEffect(() => {
+    getUserRepos(params.login);
+  }, [params.login, getUserRepos]);
 
   return (
     <Fragment>
@@ -87,6 +92,7 @@ function User({ user, loading, getUser }) {
         <div className="badge badge-light">Public Repos: {public_repos}</div>
         <div className="badge badge-dark">Public Gists: {public_gists}</div>
       </div>
+      <Repos repos={repos} />
     </Fragment>
   );
 }
