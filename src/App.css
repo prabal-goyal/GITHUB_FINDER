@@ -24,7 +24,7 @@ body {
 }
 
 a {
-  color: var(--primary-color);
+  color: #046169;
   text-decoration: none;
 }
 
@@ -249,7 +249,7 @@ img {
 .bg-primary,
 .badge-primary,
 .alert-primary {
-  background: var(--primary-color);
+  background: #046169;
   color: #fff;
 }
 
@@ -265,7 +265,7 @@ img {
 .bg-dark,
 .badge-dark,
 .alert-dark {
-  background: var(--dark-color);
+  background: #10898d;
   color: #fff;
 }
 

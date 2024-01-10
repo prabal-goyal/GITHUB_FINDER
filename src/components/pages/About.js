@@ -5,7 +5,7 @@ const About = () => {
     <Fragment>
       <h1>About this App</h1>
       <p>App to search Github Users</p>
-      <p>Version: 1.0.0</p>
+      <p>Version: <strong>1.0.1</strong></p>
     </Fragment>
   );
 };
