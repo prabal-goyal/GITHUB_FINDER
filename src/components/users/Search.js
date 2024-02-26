@@ -8,7 +8,7 @@ const Search = () => {
   const [text, setText] = useState('');
 
   const { setAlert } = alertContext;
-  const { searchUsers } = githubContext;
+  const { searchUsers, clearUsers } = githubContext;
 
   const onChange = (e) => {
     setText(e.target.value);
@@ -42,7 +42,7 @@ const Search = () => {
       {githubContext.users.length > 0 && (
         <button
           className="btn btn-light btn-block"
-          onClick={githubContext.clearUsers}
+          onClick={clearUsers}
         >
           Clear
         </button>

@@ -37,7 +37,7 @@ const User = () => {
   return (
     <Fragment>
       <Link to="/" className="btn btn-light">
-        Back to Search
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
       </Link>
       Hireable:{' '}
       {hireable ? (
