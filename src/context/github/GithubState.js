@@ -85,19 +85,19 @@ const GithubState = (props) => {
     dispatch({ type: SET_LOADING });
   };
 
+  const contextValue = React.useMemo(() => ({
+    users: state.users,
+    user: state.user,
+    repos: state.repos,
+    loading: state.loading,
+    searchUsers,
+    clearUsers,
+    getUser,
+    getUserRepos,
+  }), [state.users, state.user, state.repos, state.loading, getUser, getUserRepos, searchUsers]);
+
   return (
-    <GithubContext.Provider
-      value={{
-        users: state.users,
-        user: state.user,
-        repos: state.repos,
-        loading: state.loading,
-        searchUsers,
-        clearUsers,
-        getUser,
-        getUserRepos,
-      }}
-    >
+    <GithubContext.Provider value={contextValue}>
       {props.children}
     </GithubContext.Provider>
   );

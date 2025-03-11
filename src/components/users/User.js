@@ -1,9 +1,8 @@
-import React, { useEffect, Fragment, useContext } from 'react';
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import Repos from '../repos/Repos';
-import Spinner from '../layout/Spinner';
-import GithubContext from '../../context/github/githubContext';
+import React, { useEffect, Fragment, useContext } from "react";
+import { useParams, Link } from "react-router-dom";
+import Repos from "../repos/Repos";
+import Spinner from "../layout/Spinner";
+import GithubContext from "../../context/github/githubContext";
 
 const User = () => {
   const githubContext = useContext(GithubContext);
@@ -37,9 +36,9 @@ const User = () => {
   return (
     <Fragment>
       <Link to="/" className="btn btn-light">
-        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        <i className="fa fa-arrow-left" aria-hidden="true"></i>
       </Link>
-      Hireable:{' '}
+      Hireable:{" "}
       {hireable ? (
         <i className="fas fa-check text-success" />
       ) : (
@@ -51,7 +50,7 @@ const User = () => {
             src={avatar_url}
             className="round-img"
             alt=""
-            style={{ width: '150px' }}
+            style={{ width: "150px" }}
           />
           <h1>{name}</h1>
           <p>Location: {location}</p>
@@ -59,31 +58,29 @@ const User = () => {
         <div>
           {bio && (
             <Fragment>
-              <p>
-                <strong>Bio: </strong>
-                {bio}
-              </p>
+              <strong>Bio: </strong>
+              {bio}
             </Fragment>
           )}
           <ul>
             <li>
               {login && (
                 <Fragment>
-                  <strong>Username: </strong> {login}{' '}
+                  <strong>Username: </strong> {login}{" "}
                 </Fragment>
               )}
             </li>
             <li>
               {company && (
                 <Fragment>
-                  <strong>Company: </strong> {company}{' '}
+                  <strong>Company: </strong> {company}{" "}
                 </Fragment>
               )}
             </li>
             <li>
               {blog && (
                 <Fragment>
-                  <strong>Website: </strong> {blog}{' '}
+                  <strong>Website: </strong> {blog}{" "}
                 </Fragment>
               )}
             </li>
